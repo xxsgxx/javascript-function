@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+      function height() {
+	var line = '\n';
+	var a = new Array(0, 0, 0, 0);
+	var b = new Array(0, 0, 0, 0);
+	var c = new Array(0, 0, 0, 0);
+	var d = new Array(0, 0, 0, 0);
+
+	var re;
+	var cnt_a = 0;
+	var cnt_b = 0;
+        for (var i=0; i<arguments.length; i++) {
+		var arrayList1 = arguments[i].split('\n');
+		if(cnt_a < arrayList1.length) cnt_a = arrayList1.length;
+		for(var j=0; j<arrayList1.length; j++) {
+			var arrayList2 = arrayList1[j].split('');
+			if(cnt_b < arrayList2.length) cnt_b = arrayList2.length;
+			if(j==0) {
+				for(var k=0; k<arrayList2.length; k++) {
+					if(arrayList2[k] == 'O') a[k] += 1;
+				}
+			}
+			if(j==1) {
+				for(var k=0; k<arrayList2.length; k++) {
+					if(arrayList2[k] == 'O') b[k] += 1;
+				}
+			}
+			if(j==2) {
+				for(var k=0; k<arrayList2.length; k++) {
+					if(arrayList2[k] == 'O') c[k] += 1;
+				}
+			}
+			if(j==3) {
+				for(var k=0; k<arrayList2.length; k++) {
+					if(arrayList2[k] == 'O') d[k] += 1;
+				}
+			}
+
+	
+		}
+	}
+	if(cnt_a == 1) {
+		re = a[0] + ' ' +  a[1] + ' ' +  a[2] + ' ' +  a[3];
+	}
+	else if(cnt_a == 2) {
+		re = a[0] + ' ' +  a[1] + ' ' +  a[2] + ' ' +  a[3] + '\n' + 
+			b[0] + ' ' +  b[1] + ' ' +  b[2] + ' ' +  b[3];
+	}
+	else if(cnt_a == 3) {
+		re = a[0] + ' ' +  a[1] + ' ' +  a[2] + ' ' +  a[3] + '\n' + 
+			b[0] + ' ' +  b[1] + ' ' +  b[2] + ' ' +  b[3] + '\n' +
+				c[0] + ' ' +  c[1] + ' ' +  c[2] + ' ' +  c[3];
+	}
+	else if(cnt_a == 4) {
+		re = a[0] + ' ' +  a[1] + ' ' +  a[2] + ' ' +  a[3] + '\n' + 
+			b[0] + ' ' +  b[1] + ' ' +  b[2] + ' ' +  b[3] + '\n' +
+				c[0] + ' ' +  c[1] + ' ' +  c[2] + ' ' +  c[3] + '\n' +
+					d[0] + ' ' +  d[1] + ' ' +  d[2] + ' ' +  d[3];
+	}
+	if(cnt_b == 1) re = a[0]; //맨 마지막은 어떻게 해야될지 잘 모르겠습니다.ㅜㅜ 카운터 설정해도 계속 fail떠요..
+	return re;
+
+      }
+
+      exepect(height('O', 'OOOO\nOOOO'), '2 1 1 1\n1 1 1 1');
+      exepect(height('OOOO', 'OOOO\nOOOO'), '2 2 2 2\n1 1 1 1');
+      exepect(height('OO\nOO', 'OOOO\nOOOO'), '2 2 1 1\n2 2 1 1');
+      exepect(height('OO\nOO\nOO', 'OOOO\nOOOO'), '2 2 1 1\n2 2 1 1\n1 1 0 0');
+      exepect(height('O', 'OOOO\nOOOO', 'OOOO'), '3 2 2 2\n1 1 1 1');
+      exepect(height('OOOO', 'OOOO\nOOOO', 'OOOO'), '3 3 3 3\n1 1 1 1');
+      exepect(height('OO\nOO', 'OOOO\nOOOO', 'OOOO'), '3 3 2 2\n2 2 1 1');
+      exepect(height('OO\nOO\nOO', 'OOOO\nOOOO', 'O\nO\nO\nO'), '3 2 1 1\n3 2 1 1\n2 1 0 0\n1 0 0 0');
+      exepect(height('O', 'O', 'O'), '3');
+	
+      function exepect(l, r) {
+        if (l === r)
+         console.log('pass');
+        else
+         console.log('fail');
+      }
+    </script>
+</head>
+<body>
+</body>
+</html>

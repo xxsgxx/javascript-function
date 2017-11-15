@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+      function print_scores_chart() {
+	var max = 0;
+	for (var i=0; i<arguments.length; i++) {
+		if(arguments[i] > max) max = arguments[i];
+	}
+	for(; max>0; max--) {
+		for(var j=0; j<arguments.length; j++){
+			if(arguments[j] >= max) console.log("*");
+			else console.log(" ");
+		}
+		console.log("\n");
+	}
+
+      }
+
+      print_scores_chart(1, 2, 3, 4, 5);
+      print_scores_chart(10, 1, 10, 1, 5, 5);
+      print_scores_chart(5, 2, 2, 9, 3, 5, 9);
+    </script>
+</head>
+<body>
+</body>
+</html>
